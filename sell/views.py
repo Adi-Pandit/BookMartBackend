@@ -6,8 +6,6 @@ from rest_framework.response import Response
 import cv2
 from sklearn.cluster import KMeans
 
-# Create your views here.
-
 class BookDetailsList(ListCreateAPIView):
 
     serializer_class = BookDetailsSerializer
@@ -109,9 +107,7 @@ class BookEstimatedPriceView(GenericAPIView):
 
             for ele in labels:
                 label_count[ele] += 1
-            index_color = label_count.index(max(label_count))
         
-
             dict_colour_percen = {}
             print
             for index, ele in enumerate(label_count):

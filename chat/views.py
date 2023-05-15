@@ -1,13 +1,8 @@
-from django.shortcuts import render
-from rest_framework.views import APIView
-from rest_framework.response import Response
 from .models import Chat 
 from .serializers import ChatSerializer
 from rest_framework import permissions
 from rest_framework.generics import ListCreateAPIView
 from django.contrib.auth.models import User
-
-# Create your views here.
 
 class MessageSendView(ListCreateAPIView):
     serializer_class = ChatSerializer

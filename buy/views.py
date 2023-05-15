@@ -1,11 +1,8 @@
-from django.shortcuts import render
 from rest_framework.generics import ListCreateAPIView, RetrieveUpdateDestroyAPIView
 from .serializers import BuyDetailsSerializer, PaymentDetailsSerializer
 from rest_framework import permissions
 from .models import Order_Summary, Payment_Detail
 from sell.models import Book_Detail
-from rest_framework.response import Response
-# Create your views here.
 
 class BuyDetailsList(ListCreateAPIView):
     serializer_class = BuyDetailsSerializer

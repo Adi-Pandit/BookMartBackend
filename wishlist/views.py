@@ -1,12 +1,8 @@
-from django.shortcuts import render
 from rest_framework.generics import ListCreateAPIView, RetrieveUpdateDestroyAPIView
 from .models import Wishlist 
 from rest_framework import permissions
 from sell.models import Book_Detail
 from .serializers import WishlistSerializer
-from rest_framework.response import Response
-
-# Create your views here.
 
 class WishlistView(ListCreateAPIView):
     serializer_class = WishlistSerializer
