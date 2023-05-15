@@ -4,7 +4,6 @@ from .serializers import BookDetailsSerializer, BookImageSerializer
 from rest_framework import permissions, status
 from rest_framework.response import Response
 import cv2
-#import matplotlib.pyplot as plt
 from sklearn.cluster import KMeans
 
 # Create your views here.
@@ -43,7 +42,6 @@ class UserUploadedBooksView(ListCreateAPIView):
     permission_classes = (permissions.IsAuthenticated,)
 
     def get_queryset(self):
-        print(self.request.user)
         return Book_Detail.objects.filter(user=self.request.user)
     
 
@@ -77,15 +75,12 @@ class BookEstimatedPriceView(GenericAPIView):
 
         user_id = self.request.user
         images = Book_Images.objects.filter(user=user_id).order_by('-timestamp').first()  
-        print(images)
         image_id = images.id
-        print(image_id)
 
         img1 = str(images.book_page1.path)
         img2 = str(images.book_page2.path)
         img3 = str(images.book_page3.path)
         originalPrice = images.price
-        print(originalPrice)
 
         if originalPrice == None or originalPrice == 0:
             price = 200 
@@ -124,7 +119,6 @@ class BookEstimatedPriceView(GenericAPIView):
                 list_hex.append(hex_color)
                 color_percen = float(ele)/len(labels)*100
                 dict_colour_percen[hex_color] = color_percen
-            #plt.show()
 
         list_first_index = []
         for items in list_hex:
